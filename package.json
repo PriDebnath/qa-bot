@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.11.0",
-    "ollama": "^0.5.17"
+    "docx-parser": "^0.2.1",
+    "ollama": "^0.5.17",
+    "pdf-parse": "^1.1.1"
   }
 }

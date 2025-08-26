@@ -37,8 +37,11 @@ Answer:
 // --- main Q&A bot ---
 async function qaBot(filePath, query) {
   // Step 1: load text
+  console.log("📄 Reading file...");
   const text = fs.readFileSync(filePath, "utf8");
-
+if(!text || text.trim().length === 0) {
+    throw new Error("The file is empty or could not be read.");
+}
   // Step 2: chunk
   const chunks = chunkText(text, 200);
 
@@ -62,4 +65,4 @@ async function qaBot(filePath, query) {
 }
 
 // Example run
-qaBot("notes.txt", "What are the office hours?");
+qaBot("input-files/notes.txt", "What are the office hours?");

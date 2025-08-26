@@ -96,3 +96,5 @@ export async function getAvailableModel(preferredModel = "gemma3:1b") {
     throw new Error(`Model ${preferredModel} not found locally. Please pull it using: ollama pull ${preferredModel}`);
   }
 }
+
+testOllamaEmbedding()
