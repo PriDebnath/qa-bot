@@ -1,87 +1,110 @@
-# QA Bot with Semantic Search
+# AI Q&A Bot 🤖
 
-A Question-Answering bot that uses semantic search and local LLMs through Ollama to provide context-aware answers from text documents.
+An intelligent document analysis system that lets you ask questions about any uploaded document and get relevant answers in real-time.
 
-## Features
+## 🎥 Demo
+## Screenshot
+![Demo Screenshot](assets/demo-v1.png)
 
-- Semantic search using text embeddings
-- Local LLM integration with Ollama
-- Document chunking for better context handling
-- Cosine similarity for finding relevant context
+## Video
+https://github.com/user-attachments/assets/ac2b3782-94f8-41a2-be63-ff0f01397be8
 
-## Prerequisites
+![Demo Video Download](assets/demo-v1.mp4)
 
-1. Node.js (v16 or higher)
-2. [Ollama](https://ollama.ai/) installed on your system
-3. Required models:
-   - `nomic-embed-text` (for embeddings)
-   - `gemma3:1b` (for text generation)
+## ✨ Features
 
-## Setup
+- 📁 Drag-and-drop file upload interface
+- 💬 Natural language Q&A about document contents
+- 🎨 Modern, responsive UI with gradient aesthetics
+- ⚡ Real-time streaming responses
+- 🔒 Secure file handling with automatic cleanup
+
+## 🚀 Quick Start
 
 1. Clone the repository:
-```sh
-git clone <repository-url>
+```bash
+git clone https://github.com/yourusername/qa-bot.git
 cd qa-bot
 ```
 
 2. Install dependencies:
-```sh
+```bash
 npm install
 ```
 
-3. Pull required Ollama models:
-```sh
-ollama pull nomic-embed-text
-ollama pull gemma3:1b
+3. Start the server:
+```bash
+npm start
 ```
 
-## Usage
+4. Open http://localhost:3000 in your browser
 
-1. Start the Ollama server:
-```sh
-ollama serve
+## 🏗️ Architecture
+
+### Frontend (public/index.html)
+- Modern UI with gradient design
+- Drag & drop file upload
+- Real-time response streaming
+- Error handling and loading states
+
+### Backend (index.js)
+- Express.js server
+- Multer for file handling
+- Secure file processing
+- Automatic cleanup after analysis
+
+## 🛠️ Tech Stack
+
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Backend**: Node.js, Express
+- **File Handling**: Multer
+- **AI Processing**: Custom QA Bot implementation
+
+## 🔄 API Endpoints
+
+### POST /query
+Upload a file and ask questions about its contents.
+
+```javascript
+// Request (multipart/form-data)
+{
+  file: File,
+  query: string
+}
+
+// Response
+{
+  answer: string
+}
 ```
 
-2. Run the QA bot with your text file and question:
-```sh
-node qa-bot.js
-```
+## 🎯 Use Cases
 
-## Project Structure
+1. **Document Analysis**
+   - Legal document review
+   - Research paper analysis
+   - Technical documentation queries
 
-- `qa-bot.js` - Main QA bot implementation
-- `utils/`
-  - `embedding.js` - Embedding and similarity functions
-  - `ollama.js` - Ollama service management
-- `semantic-search/` - Example implementations
-  - `1.js` - Basic semantic search
-  - `2.js` - Alternative implementation using axios
-  - `3.js` - Enhanced version with model checking
+2. **Educational Support**
+   - Study material comprehension
+   - Quick document summarization
+   - Exam preparation
 
-## Demo
+3. **Business Intelligence**
+   - Contract analysis
+   - Report interpretation
+   - Policy review
 
-Here's how the QA bot works:
+4. **Content Research**
+   - Market research analysis
+   - Competitive analysis
+   - Data extraction
 
-1. Loads a text document
-2. Chunks the text into manageable pieces
-3. Creates embeddings for chunks
-4. Finds the most relevant context for the question
-5. Generates an answer using the LLM with the found context
+## 🔜 Future Enhancements
 
-![Demo Screenshot](assets/demo-v1.png)
-
-## How It Works
-
-1. **Document Processing**:
-   - Text is split into chunks
-   - Each chunk is converted to embeddings
-
-2. **Query Processing**:
-   - User question is converted to embedding
-   - Most similar chunk is found using cosine similarity
-
-3. **Answer Generation**:
-   - Relevant context is sent to LLM
-   - LLM generates natural language answer
+- [ ] Support for multiple file formats (PDF, DOCX, TXT)
+- [ ] Chat history persistence
+- [ ] Document highlighting for answers
+- [ ] Batch processing capability
+- [ ] Export conversation history
 
