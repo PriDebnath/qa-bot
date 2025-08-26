@@ -4,12 +4,12 @@ An intelligent document analysis system that lets you ask questions about any up
 
 ## 🎥 Demo
 ## Screenshot
-![Demo Screenshot](assets/demo-v1.png)
+![Demo Screenshot](assets/demo-v2.png)
 
 ## Video
 https://github.com/user-attachments/assets/ac2b3782-94f8-41a2-be63-ff0f01397be8
 
-![Demo Video Download](assets/demo-v1.mp4)
+⬇️[Demo Video Download](assets/demo-v1.mp4)
 
 ## ✨ Features
 
