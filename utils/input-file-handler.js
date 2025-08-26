@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 // import pdf from "pdf-parse";
-// import mammoth from "mammoth";
+import mammoth from "mammoth";
 // import { parse } from "csv-parse/sync";
 
 /**
@@ -23,11 +23,11 @@ async function extractTextFromTxt(filePath) {
 // /**
 //  * Extract text from a DOCX file
 //  */
-// async function extractTextFromDocx(filePath) {
-//   const dataBuffer = await fs.promises.readFile(filePath);
-//   const result = await mammoth.extractRawText({ buffer: dataBuffer });
-//   return result.value || ""; // mammoth returns { value, messages }
-// }
+async function extractTextFromDocx(filePath) {
+  const dataBuffer = await fs.promises.readFile(filePath);
+  const result = await mammoth.extractRawText({ buffer: dataBuffer });
+  return result.value || ""; // mammoth returns { value, messages }
+}
 
 /**
  * Extract text from a CSV file
@@ -50,8 +50,8 @@ export async function extractTextFromFile(filePath) {
       return extractTextFromTxt(filePath);
     // case ".pdf":
     //   return extractTextFromPdf(filePath);
-    // case ".docx":
-    //   return extractTextFromDocx(filePath);
+    case ".docx":
+      return extractTextFromDocx(filePath);
     // case ".csv":
     //   return extractTextFromCsv(filePath);
     default:

@@ -72,16 +72,21 @@ Answer:
 }
 
 // //  Run txt file
-qaBotV2("input-files/notes.txt", "What are the office hours?").then(answer => {
-  console.log("\n💡 Answer:", answer);
-}).catch(err => {
-  console.error("Error:", err);
-});
-
-// Run docx file 
-// qaBotV2("input-files/ai_overview.docx", "What is ai?").then(answer => {
-//   console.log("Answer:", answer);
+// await qaBotV2("input-files/notes.txt", "What are the office hours?").then(answer => {
+//   console.log("\n💡 Answer:", answer);
 // }).catch(err => {
 //   console.error("Error:", err);
 // });
 
+//// Run docx file 
+await qaBotV2("input-files/ai_overview.docx", "What is ai?").then(answer => {
+  console.log("Answer:", answer);
+}).catch(err => {
+  console.error("Error:", err);
+});
+
+await qaBotV2("input-files/ai_overview.docx", "challenges using ai?").then(answer => {
+  console.log("Answer:", answer);
+}).catch(err => {
+  console.error("Error:", err);
+});
