@@ -1,0 +1,33 @@
+Welcome to Acme Corp Knowledge Base
+
+Company Overview:
+Acme Corp is a leading provider of innovative solutions in technology and logistics. Our mission is to simplify people's lives through reliable services, products, and customer support.
+
+Office Hours:
+Our official working hours are Monday through Friday, 9:00 AM to 5:00 PM, excluding national holidays. The office is closed on weekends. Customer support is available online during these hours. For urgent issues outside business hours, customers can raise tickets which will be addressed on the next working day.
+
+Password and Account Settings:
+Users can reset their passwords by navigating to the Account Settings page on our website. The reset process involves sending a password reset email to the registered email address. If you do not receive the email within a few minutes, please check your spam or junk folder.
+
+Shipping Policy:
+All standard shipping orders are processed within 1–2 business days and usually take 3 to 5 business days to arrive. Expedited shipping options are available at checkout. International orders may take 7 to 15 business days depending on the destination country.
+
+Returns and Refunds:
+Customers may return unused and unopened products within 30 days of purchase. Refunds are processed to the original payment method within 7 to 10 business days after the returned item is inspected. To initiate a return, customers should contact support to obtain a return merchandise authorization (RMA) number.
+
+Billing Issues:
+If you encounter problems with your billing, such as incorrect charges or failed transactions, please contact support immediately. Our billing team works to resolve issues within 2–3 business days. We accept major credit cards, debit cards, and digital payment methods.
+
+Support Information:
+Our support team can be contacted via email, live chat, or phone. The preferred method is live chat, which ensures the fastest response. For technical support regarding products, include detailed information about the product version and any error messages you have received.
+
+Data Privacy:
+Acme Corp values user privacy. We adhere to GDPR guidelines and ensure that customer data is never shared with unauthorized third parties. Customers can request data deletion by contacting the privacy officer at privacy@acmecorp.com.
+
+Employee Benefits:
+Acme Corp employees enjoy a comprehensive benefits package including health insurance, retirement plans, and annual paid leave. Additional perks include wellness programs and career development training.
+
+Emergency Procedures:
+In case of emergencies such as natural disasters, power failures, or system outages, employees are required to follow the emergency handbook distributed annually. Customers will be notified through email and website banners about any major disruptions in service.
+
+End of Knowledge Base.
