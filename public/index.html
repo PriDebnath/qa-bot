@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Q&A Chat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg,#38bdf8,#818cf8,#f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input {
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    button {
+      background: linear-gradient(90deg,#3b82f6,#8b5cf6);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.3s ease;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    #outputBox {
+      min-height: 100px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1rem;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+    }
+
+    .typing {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      margin: 0 2px;
+      animation: blink 1.2s infinite;
+    }
+    .typing:nth-child(2) { animation-delay: 0.2s; }
+    .typing:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 80%, 100% { transform: scale(0.7); opacity: 0.5; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ask AI Anything 🤖</h1>
+    <input type="file" id="fileInput" />
+    <input type="text" id="queryInput" placeholder="Type your question here..." value="what ai is?" />
+    <button id="askBtn">Ask Question</button>
+    <div id="outputBox">💡 Upload a file & ask me something.</div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const queryInput = document.getElementById("queryInput");
+    const askBtn = document.getElementById("askBtn");
+    const outputBox = document.getElementById("outputBox");
+
+    let uploadedFile = null;
+
+    fileInput.addEventListener("change", (e) => {
+      uploadedFile = e.target.files[0];
+      outputBox.textContent = `✅ File uploaded: ${uploadedFile.name}`;
+    });
+
+    askBtn.addEventListener("click", async () => {
+      if (!uploadedFile) {
+        outputBox.textContent = "⚠️ Please upload a file first.";
+        return;
+      }
+      const query = queryInput.value.trim();
+      if (!query) {
+        outputBox.textContent = "⚠️ Please enter a question.";
+        return;
+      }
+
+      // Show typing dots
+      outputBox.innerHTML = `<span class="typing"></span><span class="typing"></span><span class="typing"></span>`;
+
+      const formData = new FormData();
+      formData.append("file", uploadedFile);
+      formData.append("query", query);
+
+      try {
+        const res = await fetch("http://localhost:3000/query", {
+          method: "POST",
+          body: formData
+        });
+        const data = await res.json();
+
+        setTimeout(() => {
+          outputBox.textContent = "🤖 " + data.answer;
+        }, 800); // small delay to feel natural
+      } catch (err) {
+        outputBox.textContent = "❌ Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -77,10 +77,10 @@ Answer:
 
 
 //// Run csv file 
-await qaBotV2("input-files/sample_qa.csv", "What is the need of Python? ").then(answer => {
-    console.log("\n💡 Answer:", answer);
-}).catch(err => {
-  console.error("Error:", err);
-});
+// await qaBotV2("input-files/sample_qa.csv", "What is the need of Python? ").then(answer => {
+//     console.log("\n💡 Answer:", answer);
+// }).catch(err => {
+//   console.error("Error:", err);
+// });
 
 

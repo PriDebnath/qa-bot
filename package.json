@@ -5,16 +5,23 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pritam Debnath",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.11.0",
+    "cors": "^2.8.5",
     "docx-parser": "^0.2.1",
+    "express": "^5.1.0",
     "mammoth": "^1.10.0",
+    "multer": "^2.0.2",
     "ollama": "^0.5.17",
     "pdf-text-reader": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
