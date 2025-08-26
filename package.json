@@ -15,6 +15,6 @@
     "docx-parser": "^0.2.1",
     "mammoth": "^1.10.0",
     "ollama": "^0.5.17",
-    "pdf-parse": "^1.1.1"
+    "pdf-text-reader": "^5.1.0"
   }
 }

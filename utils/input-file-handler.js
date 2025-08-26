@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-// import pdf from "pdf-parse";
+import { readPdfText } from 'pdf-text-reader';
 import mammoth from "mammoth";
 // import { parse } from "csv-parse/sync";
 
@@ -11,15 +11,6 @@ async function extractTextFromTxt(filePath) {
   return fs.promises.readFile(filePath, "utf-8");
 }
 
-/**
- * Extract text from a PDF file
-//  */
-// async function extractTextFromPdf(filePath) {
-//   const dataBuffer = await fs.promises.readFile(filePath);
-//   const data = await pdf(dataBuffer);
-//   return data.text;
-// }
-
 // /**
 //  * Extract text from a DOCX file
 //  */
@@ -27,6 +18,19 @@ async function extractTextFromDocx(filePath) {
   const dataBuffer = await fs.promises.readFile(filePath);
   const result = await mammoth.extractRawText({ buffer: dataBuffer });
   return result.value || ""; // mammoth returns { value, messages }
+}
+
+/**
+ * Extract text from a PDF file
+ */
+ async function extractTextFromPdf(filePath) {
+    try {
+        const data = await readPdfText({ url: filePath });
+        return data
+    } catch (error) {
+        console.error("Error extracting PDF text:", error);
+        throw new Error("PDF extract failed");
+    }
 }
 
 /**
@@ -41,15 +45,15 @@ async function extractTextFromDocx(filePath) {
 /**
  * Main file handler that delegates based on extension
  */
-export async function extractTextFromFile(filePath) {
+export async function extractTextFromFile(filePath, opts = {}) {
   const ext = path.extname(filePath).toLowerCase();
   console.log("File extension:", ext);
 
   switch (ext) {
     case ".txt":
       return extractTextFromTxt(filePath);
-    // case ".pdf":
-    //   return extractTextFromPdf(filePath);
+    case ".pdf":
+      return extractTextFromPdf(filePath, { password: opts.password });
     case ".docx":
       return extractTextFromDocx(filePath);
     // case ".csv":
