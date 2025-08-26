@@ -22,13 +22,15 @@ export async function qaBotV2(filePath, question, modelName = "gemma3:1b") {
   // 3. Ask question with context
   console.log("💡 Generating answer...");
   const prompt = `
-You are a Q&A bot. 
-Context: ${fileContent}
+You are a helpful assistant. Use the provided context to answer the question.
+If the answer is not in the context, reply with "I don't know based on the file."
+
+Context:
+${fileContent}
 
 Question: ${question}
 Answer:
   `;
-
   const response = await ollama.chat({
     model: modelName,
     messages: [{ role: "user", content: prompt }],
@@ -58,9 +60,27 @@ Answer:
 // });
 
 
-//// Run pdf file 
-await qaBotV2("input-files/ai_overview.pdf", "What is AI?").then(answer => {
+// //// Run pdf file 
+// await qaBotV2("input-files/ai_overview.pdf", "What is AI?").then(answer => {
+//     console.log("\n💡 Answer:", answer);
+// }).catch(err => {
+//   console.error("Error:", err);
+// });
+
+
+//// Run csv file 
+// await qaBotV2("input-files/sample_qa.csv", "Who is AI?").then(answer => {
+//     console.log("\n💡 Answer:", answer);
+// }).catch(err => {
+//   console.error("Error:", err);
+// });
+
+
+//// Run csv file 
+await qaBotV2("input-files/sample_qa.csv", "What is the need of Python? ").then(answer => {
     console.log("\n💡 Answer:", answer);
 }).catch(err => {
   console.error("Error:", err);
 });
+
+

@@ -36,11 +36,17 @@ async function extractTextFromDocx(filePath) {
 /**
  * Extract text from a CSV file
  */
-// async function extractTextFromCsv(filePath) {
-//   const content = await fs.promises.readFile(filePath, "utf-8");
-//   const records = parse(content, { columns: false, skip_empty_lines: true });
-//   return records.map(r => r.join(" ")).join("\n");
-// }
+export async function extractTextFromCsv(filePath) {
+  const data = await fs.promises.readFile(filePath, "utf-8");
+  // normalize whitespace, remove extra commas if needed
+  const text = data
+    .split("\n")
+    .map(row => row.trim())
+    .filter(row => row.length > 0)
+    .join("\n");
+
+  return text;
+}
 
 /**
  * Main file handler that delegates based on extension
@@ -56,8 +62,8 @@ export async function extractTextFromFile(filePath, opts = {}) {
       return extractTextFromPdf(filePath, { password: opts.password });
     case ".docx":
       return extractTextFromDocx(filePath);
-    // case ".csv":
-    //   return extractTextFromCsv(filePath);
+    case ".csv":
+      return extractTextFromCsv(filePath);
     default:
       throw new Error(`Unsupported file type: ${ext}`);
   }
