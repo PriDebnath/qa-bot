@@ -71,7 +71,8 @@ Here's how the QA bot works:
 5. Generates an answer using the LLM with the found context
 
 ![Demo Screenshot](assets/demo-v1.png)
-[Demo Video](https://github.com/user-attachments/files/21987291/27aab373-c900-420f-9662-e44524479ea8.wav)
+Demo Video
+https://github.com/user-attachments/files/21987291/27aab373-c900-420f-9662-e44524479ea8.wav
 
 ## How It Works
 
