@@ -4,7 +4,8 @@ import multer from "multer";
 import fs from "fs";
 import path from "path";
 import cors from "cors";
-import { qaBotV2 } from "./qa-bot-v2.js";
+import { qaBotV2 as bot} from "./version/qa-bot-v2.js";
+// import { qaBot as bot } from "./version/qa-bot-v1.js";
 
 const app = express();
 app.use(cors());
@@ -36,7 +37,7 @@ app.post("/query", upload.single("file"), async (req, res) => {
     console.log({ filePath });
 
     // Example: read file (adjust depending on doc/pdf parser you use)
-    const answer = await qaBotV2(filePath, query);
+    const answer = await bot(filePath, query);
     console.log({ answer });
 
     // cleanup after processing

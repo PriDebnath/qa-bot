@@ -1,7 +1,7 @@
 // qa-bot-v2.js
-import { hasModel } from "./utils/ollama.js";
+import { hasModel } from "../utils/ollama.js";
 import ollama from "ollama";
-import { extractTextFromFile } from "./utils/input-file-handler.js";
+import { extractTextFromFile } from "../utils/input-file-handler.js";
 
 // ---------- QA Bot V2 ----------
 export async function qaBotV2(filePath, question, modelName = "gemma3:1b") {

@@ -1,7 +1,7 @@
 import fs from "fs";
 import ollama from "ollama";
-import { getAvailableModel } from "./utils/ollama.js";
-import { embedDocs, embedText, findBestMatch } from "./utils/embedding.js";
+import { getAvailableModel } from "../utils/ollama.js";
+import { embedDocs, embedText, findBestMatch } from "../utils/embedding.js";
 
 // --- chunk helper ---
 function chunkText(text, chunkSize = 200) {
@@ -35,7 +35,7 @@ Answer:
 }
 
 // --- main Q&A bot ---
-async function qaBot(filePath, query) {
+export async function qaBot(filePath, query) {
   // Step 1: load text
   console.log("📄 Reading file...");
   const text = fs.readFileSync(filePath, "utf8");
@@ -62,7 +62,8 @@ if(!text || text.trim().length === 0) {
   console.log("\n🔎 Query:", query);
   console.log("\n📖 Context Used:", bestDoc);
   console.log("\n💡 Answer:", answer);
+  return answer
 }
 
 // Example run
-qaBot("input-files/notes.txt", "What are the office hours?");
+// qaBot("input-files/notes.txt", "What are the office hours?");
