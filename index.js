@@ -1,14 +1,23 @@
 // server.js
-import express from "express";
-import multer from "multer";
+
 import fs from "fs";
 import path from "path";
 import cors from "cors";
+import { fileURLToPath } from "url"; 
+import multer from "multer"
+import express from "express"
 import { qaBotV2 as bot} from "./version/qa-bot-v2.js";
 // import { qaBot as bot } from "./version/qa-bot-v1.js";
 
 const app = express();
 app.use(cors());
+
+// __dirname helper for ESM
+ const __filename = fileURLToPath(import.meta.url); 
+ const __dirname = path.dirname(__filename); 
+ // Serve static frontend (your modern HTML UI in /public) 
+app.use(express.static(path.join(__dirname, "public"))); 
+app.use(express.json());
 
 // ✅ Multer setup → keep original filename
 const storage = multer.diskStorage({
