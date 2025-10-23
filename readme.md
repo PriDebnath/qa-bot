@@ -2,11 +2,11 @@
 
 An intelligent document analysis system that lets you ask questions about any uploaded document and get relevant answers in real-time.
 
-## 🎥 Demo
-## Screenshot
+## 🔴 Demo
+## 🖼️ Screenshot
 ![Demo Screenshot](assets/demo-v2.png)
 
-## Video
+## 🎥 Video
 https://github.com/user-attachments/assets/ac2b3782-94f8-41a2-be63-ff0f01397be8
 
 ⬇️[Demo Video Download](assets/demo-v1.mp4)
